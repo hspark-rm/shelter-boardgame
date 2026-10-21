@@ -1,0 +1,246 @@
+/* 수채화 그림(art/game, 바탕 #F7F1E3)에 맞춘 종이·흙색 화면. 줄 색은 그림의 흐린 파랑·세이지·테라코타에 맞췄다. */
+
+:root {
+  --page: #ebe1cb;
+  --paper: #f7f1e3;
+  --panel: #fbf7ee;
+  --ink: #3d2f24;
+  --ink2: #6e5c4c;
+  --edge: #c9b393;
+  --edge-strong: #7a5c42;
+  --accent: #c0683d;
+  --good: #567f58;
+  --bad: #b04a35;
+  --pale: #f6e3c6;
+  --rescue: #4a6fa5;
+  --care: #567f58;
+  --adopt: #c0683d;
+  --sans: 'Apple SD Gothic Neo', 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --serif: 'AppleMyungjo', 'Nanum Myeongjo', 'Noto Serif KR', 'Batang', serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  /* 종이 결(tex-paper) 위에 흙색을 곱해 바탕을 한 톤 어둡게 */
+  background: var(--page) url('art/tex-paper.webp') repeat;
+  background-blend-mode: multiply;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.4;
+  -webkit-text-size-adjust: 100%;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+h1, h2, h3, .season, .board .head .name { font-family: var(--serif); font-weight: 700; }
+button {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--edge-strong);
+  border-radius: 8px;
+  padding: 6px 11px;
+  cursor: pointer;
+  box-shadow: 0 1px 0 var(--edge-strong);
+}
+button:active:not(:disabled) { transform: translateY(1px); box-shadow: none; }
+button:disabled { opacity: .45; cursor: default; }
+/* 주요 단추는 테라코타 물감 번짐(tex-wash-button). 그림이 늦게 뜰 때를 위해 테두리 색을 남긴다. */
+button.primary {
+  background: url('art/tex-wash-button.webp') center / 100% 100% no-repeat; border-color: transparent;
+  color: #fff; text-shadow: 0 1px 2px rgba(60, 25, 10, .45); box-shadow: none;
+}
+button.small { font-size: 12.5px; padding: 3px 8px; }
+.loading { padding: 40px; text-align: center; }
+/* 아이콘은 종이색 바탕째 그려져 있어, 곱하기로 겹쳐 바탕을 지운다. */
+.ri, .bicon, .sicon { mix-blend-mode: multiply; }
+
+/* ---------- 처음 화면 ---------- */
+.title {
+  max-width: 640px; margin: 24px auto; padding: 0 0 20px;
+  background: var(--paper); border: 1px solid var(--edge); border-radius: 14px; text-align: center; overflow: hidden;
+  box-shadow: 0 2px 10px rgba(80, 60, 40, .12);
+}
+.title .hero { width: 100%; display: block; }
+.title h1 { font-size: 28px; margin: 10px 0 2px; }
+.title .sub { color: var(--ink2); margin-bottom: 14px; }
+.title label { display: block; margin: 8px 24px; text-align: left; }
+.title input {
+  font-family: var(--sans); font-size: 16px; width: 100%; padding: 7px 9px;
+  border: 1px solid var(--edge-strong); border-radius: 8px; background: #fff;
+}
+.title .buttons { display: flex; gap: 10px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+.howto { text-align: left; font-size: 13.5px; background: var(--panel); border-radius: 10px; padding: 10px 16px 10px 30px; margin: 16px 24px 0; }
+.howto li { margin: 3px 0; }
+
+/* ---------- 게임 화면 ---------- */
+.game { padding: 6px 8px; display: flex; flex-direction: column; gap: 6px; max-width: 1400px; margin: 0 auto; }
+.topbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px;
+  background: url('art/tex-bar.webp') center / 100% 100% no-repeat; border-radius: 6px; padding: 5px 14px;
+}
+.topbar .season { font-size: 20px; display: flex; align-items: center; gap: 4px; }
+.sicon { width: 28px; height: 28px; vertical-align: middle; }
+.topbar .stat { white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; }
+.topbar .spacer { flex: 1; }
+.bar { display: inline-block; width: 100px; height: 9px; background: var(--pale); border: 1px solid var(--edge); border-radius: 5px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--good); }
+.sent i { display: inline-block; width: 11px; height: 11px; border: 2px solid var(--bad); border-radius: 50%; margin-left: 2px; }
+.sent i.on { background: var(--bad); }
+
+/* 판 바탕: 종이 결 + 엷은 흙색 번짐(가장자리가 진해지는 수채화 테두리). 딱딱한 선 테두리 없음. */
+.town, .board {
+  background: url('art/tex-panel.webp') center / 100% 100% no-repeat, url('art/tex-paper.webp') repeat;
+  border-radius: 6px; box-shadow: 0 1px 4px rgba(80, 60, 40, .14);
+}
+.town { padding: 6px 10px; display: grid; grid-template-columns: 1.2fr 1.45fr 0.95fr; gap: 10px; }
+.town h3, .board h3 { margin: 0 0 3px; font-size: 15px; }
+.town .note { font-size: 11px; color: var(--ink2); margin-top: 2px; line-height: 1.3; }
+.season-box .ev { font-size: 12.5px; background: var(--paper); border-radius: 8px; padding: 4px 6px; margin-bottom: 4px; display: flex; gap: 6px; align-items: center; }
+.evimg { width: 66px; height: 44px; object-fit: cover; border-radius: 5px; flex: 0 0 auto; }
+
+.boards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.board { border: 2px solid transparent; padding: 5px 8px; opacity: .92; }
+.board.current {
+  opacity: 1; border-color: rgba(192, 104, 61, .55); box-shadow: 0 0 0 3px rgba(246, 227, 198, .9), 0 2px 8px rgba(120, 60, 30, .18);
+  background: url('art/tex-panel-warm.webp') center / 100% 100% no-repeat, url('art/tex-paper.webp') repeat;
+}
+.board .head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 3px; }
+.board .head .name { font-size: 18px; margin-right: 2px; }
+.badge { font-size: 12px; background: #e9dcc3; color: var(--ink); border-radius: 10px; padding: 1px 8px 1px 4px; white-space: nowrap; display: inline-flex; align-items: center; gap: 2px; }
+.badge.turn { background: var(--accent); color: #fff; padding: 1px 8px; }
+.badge.off { opacity: .55; }
+.bicon { width: 18px; height: 18px; }
+.res { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 1px 0 5px; font-size: 14px; }
+.res span { white-space: nowrap; display: inline-flex; align-items: center; gap: 2px; }
+.ri { width: 20px; height: 20px; }
+
+.row { display: grid; grid-template-columns: 96px 1fr auto; gap: 6px; align-items: stretch; margin-bottom: 5px; }
+.row .label { border-radius: 4px; color: #fff; text-shadow: 0 1px 2px rgba(20, 20, 20, .4); padding: 5px 8px; font-size: 14px; font-weight: 700; display: flex; flex-direction: column; justify-content: center; }
+.row .label small { display: block; font-size: 10.5px; font-weight: 500; opacity: .95; }
+.licon { width: 26px; height: 26px; background: var(--paper); border-radius: 50%; padding: 2px; margin-bottom: 1px; }
+/* 줄 머리표는 줄 색 물감 번짐(tex-wash-*) */
+.row.rescue .label { background: url('art/tex-wash-rescue.webp') center / 100% 100% no-repeat; }
+.row.care .label { background: url('art/tex-wash-care.webp') center / 100% 100% no-repeat; }
+.row.adopt .label { background: url('art/tex-wash-adopt.webp') center / 100% 100% no-repeat; }
+.slots { display: flex; gap: 4px; overflow-x: auto; min-height: 56px; }
+.slot-empty { flex: 1 1 60px; min-width: 24px; max-width: 96px; border: 1.5px dashed var(--edge); border-radius: 8px; }
+.row .act { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+
+/* 카드: 그림이 위, 이름·비용, 효과 글 */
+.card {
+  flex: 0 0 auto; width: 118px; background: var(--paper); border: 1px solid var(--edge); border-radius: 9px;
+  padding: 0 0 4px; position: relative; text-align: left; overflow: hidden; box-shadow: 0 1px 2px rgba(80, 60, 40, .12);
+}
+.card .cart { width: 100%; aspect-ratio: 2 / 1; display: block; object-fit: cover; border-bottom: 3px solid var(--edge); }
+.card.rescue .cart { border-bottom-color: var(--rescue); }
+.card.care .cart { border-bottom-color: var(--care); }
+.card.adopt .cart { border-bottom-color: var(--adopt); }
+.card .chead { display: flex; justify-content: space-between; align-items: baseline; gap: 3px; padding: 3px 5px 0; }
+.card .cname { font-size: 12.5px; font-weight: 700; line-height: 1.2; }
+/* 비용은 그림 왼쪽 위에 겹친 작은 표 */
+.card .ccost {
+  position: absolute; top: 3px; left: 3px; font-size: 11px; font-weight: 700; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 1px; background: rgba(251, 247, 238, .92); border: 1px solid var(--edge);
+  border-radius: 7px; padding: 0 4px 0 2px;
+}
+.card .ccost .ri { width: 15px; height: 15px; margin-left: 1px; }
+.card .ctext { font-size: 10.5px; line-height: 1.3; color: var(--ink2); padding: 2px 5px 0; }
+.card.mini { width: 96px; border-left: 4px solid var(--edge); padding-bottom: 3px; }
+.card.mini.rescue { border-left-color: var(--rescue); }
+.card.mini.care { border-left-color: var(--care); }
+.card.mini.adopt { border-left-color: var(--adopt); }
+.card .mhead { display: flex; gap: 4px; align-items: center; padding: 3px 4px 0; }
+.card .mimg { width: 34px; height: 23px; object-fit: cover; border-radius: 4px; flex: 0 0 auto; }
+.card.mini .cname { font-size: 11.5px; }
+.card.mini .ctext { font-size: 9.5px; padding: 1px 4px 0; }
+.card.selectable { cursor: pointer; }
+.card.selected { outline: 3px solid var(--accent); outline-offset: 1px; }
+.card.cant { opacity: .55; }
+
+.shelter, .hand, .waiting, .market { display: flex; gap: 5px; flex-wrap: wrap; align-items: flex-start; }
+.sec-title { font-size: 13.5px; font-weight: 700; margin: 4px 0 2px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.sec-title small { font-size: 11.5px; font-weight: 500; color: var(--ink2); }
+
+.kid { width: 90px; background: var(--paper); border: 1px solid var(--edge); border-radius: 9px; padding: 3px 3px 4px; text-align: center; font-size: 13px; }
+.kid .kimg { width: 64px; height: 64px; display: block; margin: 0 auto 1px; object-fit: cover; border-radius: 7px; }
+.kid .kname { line-height: 1.15; font-weight: 700; }
+.kid .tags { font-size: 10.5px; color: var(--bad); }
+.kid .tags:empty { display: none; }
+.kid.ready { border: 2px solid var(--good); background: #eef3e6; }
+.kid .ready-badge { font-size: 11px; color: #fff; background: var(--good); border-radius: 8px; padding: 0 6px; }
+.pips { display: flex; justify-content: center; gap: 2px; flex-wrap: wrap; margin: 2px 0; }
+.pip { width: 12px; height: 12px; border-radius: 50%; border: 2px solid; background: #fff; }
+.pip.food { border-color: #a8743a; } .pip.food.on { background: #c88d4c; }
+.pip.med { border-color: #567f58; } .pip.med.on { background: #6f9a6f; }
+.pip.heart { border-color: #c4677a; } .pip.heart.on { background: #df8a9a; }
+.kid button { margin-top: 2px; padding: 1px 7px; }
+
+.legend { font-size: 11px; color: var(--ink2); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.legend .pip { display: inline-block; }
+
+.toast {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 30;
+  background: var(--ink); color: #fff; border-radius: 10px; padding: 8px 14px; max-width: min(92vw, 620px);
+  font-size: 14px; box-shadow: 0 4px 12px rgba(0, 0, 0, .25); white-space: pre-line;
+}
+
+.modal-back { position: fixed; inset: 0; background: rgba(50, 36, 24, .42); z-index: 20; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.modal { background: var(--paper) url('art/tex-paper.webp') repeat; border: 1px solid var(--edge-strong); border-radius: 14px; padding: 14px 16px; width: min(580px, 100%); max-height: 90vh; overflow: auto; box-shadow: 0 8px 24px rgba(40, 28, 18, .3); }
+.modal h2 { margin: 0 0 8px; font-size: 21px; display: flex; align-items: center; gap: 6px; }
+.modal .lines { font-size: 14px; background: var(--panel); border-radius: 8px; padding: 8px 10px; margin: 8px 0; }
+.modal .lines div { margin: 2px 0; }
+.modal .buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; flex-wrap: wrap; }
+.modal .bigcard { display: flex; gap: 12px; align-items: center; background: var(--panel); border-radius: 10px; padding: 8px; margin: 6px 0; }
+.bigimg { width: 168px; height: 112px; object-fit: cover; border-radius: 8px; flex: 0 0 auto; }
+.modal .bigcard .t { font-size: 14px; }
+.modal .bigcard .n { font-family: var(--serif); font-weight: 700; font-size: 17px; }
+.modal .bigcard .f { font-size: 12px; color: var(--ink2); margin-top: 2px; }
+.gain-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0; font-size: 14px; }
+.gain-row select { font-size: 15px; padding: 3px 6px; border: 1px solid var(--edge-strong); border-radius: 6px; background: #fff; }
+.give-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.give-row .n { width: 28px; text-align: center; }
+.logbox { font-size: 13px; background: var(--panel); border-radius: 8px; padding: 8px 10px; max-height: 60vh; overflow: auto; }
+.logbox div.season { font-family: var(--serif); font-weight: 700; margin-top: 6px; }
+.adopted-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 8px 0; }
+.adopted-list div { text-align: center; font-size: 12px; width: 64px; }
+.adopted-list img { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto 2px; }
+
+/* 태블릿 세로·휴대폰: 보호소 판을 위아래로 */
+@media (max-width: 980px) {
+  .boards { grid-template-columns: 1fr; }
+  .town { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .game { padding: 6px 4px; }
+  .row { grid-template-columns: 74px 1fr; }
+  .row .act { grid-column: 1 / -1; flex-direction: row; }
+  .row .label { font-size: 13px; }
+  .card { width: 108px; }
+  .kid { width: 88px; }
+  .kid .kimg { width: 66px; height: 66px; }
+  .topbar .season { font-size: 17px; }
+  .bigimg { width: 120px; height: 80px; }
+}
+
+/* 그리드 칸이 안의 카드 폭만큼 늘어나 화면 밖으로 넘치지 않게(칸 안에서 가로 스크롤). */
+.boards > .board, .town > div, .row > .slots { min-width: 0; }
+
+/* ---------- 온라인 판 ---------- */
+.online-box { text-align: left; margin: 14px 24px 0; padding: 10px 12px; background: var(--panel); border: 1px solid var(--edge); border-radius: 10px; font-size: 14px; }
+.online-box small { color: var(--ink2); }
+.online-box .buttons { justify-content: flex-start; margin-top: 8px; }
+.online-box .note { font-size: 12.5px; color: var(--ink2); margin-top: 6px; }
+.online-box .err, .err { color: var(--bad); font-size: 13px; margin-top: 4px; }
+.glist { display: flex; align-items: center; gap: 8px; margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--edge); }
+.glist span { flex: 1; }
+.glist small { color: var(--ink2); white-space: nowrap; }
+.wait { background: var(--pale); border: 1px solid var(--edge); border-radius: 10px; padding: 6px 12px; font-weight: 600; text-align: center; }
+.net { font-size: 12.5px; color: var(--good); white-space: nowrap; }
+.net.bad { color: var(--bad); }
+.badge.me { background: var(--rescue); color: #fff; padding: 1px 8px; }
+.linkrow { display: flex; align-items: center; gap: 6px; margin: 8px 0; flex-wrap: wrap; font-size: 14px; }
+.linkrow input { flex: 1; min-width: 180px; font-size: 13px; padding: 5px 7px; border: 1px solid var(--edge-strong); border-radius: 6px; background: #fff; }

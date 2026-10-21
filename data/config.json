@@ -1,0 +1,22 @@
+{
+  "normal": {
+    "target": 19,
+    "sentLimit": 3,
+    "waitingCap": 4,
+    "shelterCap": 3,
+    "rowMax": 5,
+    "actions": [8, 7, 6, 5],
+    "seasonStartArrivals": [2, 2, 2, 3],
+    "arrivalEvery": [4, 4, 3, 2],
+    "careBaseGain": 1,
+    "rowGrowth": 2,
+    "eventFromSeason": 1,
+    "startRes": { "food": 2, "med": 1, "heart": 1, "fund": 3 },
+    "startHand": 2,
+    "seasonDraw": 1,
+    "handCap": 5,
+    "resCap": 8,
+    "marketSize": 3,
+    "giveMax": 2
+  }
+}

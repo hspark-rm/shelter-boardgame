@@ -1,0 +1,50 @@
+[
+  {
+    "id": "spring-bazaar",
+    "name": "동네 바자회",
+    "effects": [{ "op": "gainAll", "res": "food", "n": 2 }, { "op": "gainAll", "res": "med", "n": 1 }],
+    "text": "모두 사료 2와 약 1을 받아요.",
+    "flavor": "안 쓰는 담요, 남은 사료, 손으로 뜬 목도리가 한 상자 가득.",
+    "art": "event-spring-bazaar"
+  },
+  {
+    "id": "kitten-season",
+    "name": "아기 고양이 철",
+    "effects": [{ "op": "arrivalEverySeason", "n": -1 }],
+    "text": "이번 계절 동안 아이가 더 자주 와요(도착 간격 -1).",
+    "flavor": "화단 밑에서, 창고 뒤에서, 작은 울음소리가 한꺼번에.",
+    "art": "event-kitten-season"
+  },
+  {
+    "id": "cold-snap",
+    "name": "한파",
+    "effects": [{ "op": "feedMult", "n": 2 }],
+    "text": "이번 계절 끝, 아이 1마리마다 사료를 2씩 내요.",
+    "flavor": "물그릇이 얼기 전에 담요를 한 겹 더.",
+    "art": "event-cold-snap"
+  },
+  {
+    "id": "moving-season",
+    "name": "이삿짐 철",
+    "effects": [{ "op": "arrive", "n": 1 }, { "op": "arrivalEverySeason", "n": -1 }],
+    "text": "기다리는 아이가 1마리 더 오고, 이번 계절 동안 아이가 더 자주 와요(도착 간격 -1).",
+    "flavor": "짐은 다 실렸는데, 작은 발자국 몇 개가 골목에 남았어요.",
+    "art": "event-moving-season"
+  },
+  {
+    "id": "adoption-festival",
+    "name": "입양 축제",
+    "effects": [{ "op": "adoptFund", "n": 1 }],
+    "text": "이번 계절, 아이를 입양 보낼 때마다 후원금 1을 더 받아요.",
+    "flavor": "풍선, 이름표, 그리고 처음 만나는 눈빛들.",
+    "art": "event-adoption-festival"
+  },
+  {
+    "id": "monsoon",
+    "name": "장마",
+    "effects": [{ "op": "waitingCapSeason", "n": -1 }],
+    "text": "이번 계절 동안 동네 판의 기다리는 칸이 1 줄어요.",
+    "flavor": "비가 그칠 때까지, 처마 밑 자리가 모자라요.",
+    "art": "event-monsoon"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "slow-steps", "name": "느린 걸음도 함께",
+    "check": { "type": "adoptedTagSeason", "tags": ["senior", "hurt"], "n": 1 },
+    "reward": [{ "op": "gainAll", "res": "fund", "n": 2 }],
+    "text": "이번 계절에 노령이거나 몸이 불편한 아이를 1마리 이상 입양 보내면, 모두 후원금 2를 받아요.",
+    "art": "goal-slow-steps"
+  },
+  {
+    "id": "three-families", "name": "세 가족의 문",
+    "check": { "type": "adoptedSeason", "n": 3 },
+    "reward": [{ "op": "gainAnyAll", "n": 2 }],
+    "text": "이번 계절에 3마리 이상 입양 보내면, 모두 사료·약·마음 중 2를 골라 받아요.",
+    "art": "goal-three-families"
+  },
+  {
+    "id": "every-row", "name": "고르게 자란 보호소",
+    "check": { "type": "allRowsFilled" },
+    "reward": [{ "op": "drawAll", "n": 1 }],
+    "text": "두 사람 모두 세 줄에 카드가 1장 이상 있으면, 모두 도움 카드 1장을 받아요.",
+    "art": "goal-every-row"
+  },
+  {
+    "id": "quiet-street", "name": "조용한 골목",
+    "check": { "type": "waitingAtMost", "n": 1 },
+    "reward": [{ "op": "sentLimit", "n": 1 }],
+    "text": "계절 끝에 기다리는 아이가 1마리 이하이면, 이웃 보호소 한도가 1 늘어요.",
+    "art": "goal-quiet-street"
+  }
+]

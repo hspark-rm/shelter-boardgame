@@ -1,0 +1,197 @@
+[
+  {
+    "id": "rescue-van", "name": "구조 차량", "kind": "장비", "row": "rescue",
+    "cost": { "fund": 3 },
+    "onActivate": [{ "op": "rescue", "n": 1 }],
+    "text": "작동: 기다리는 아이를 1마리 더 데려와요.",
+    "flavor": "바퀴 네 개, 담요 한 장, 빈자리 하나.",
+    "art": "card-rescue-van"
+  },
+  {
+    "id": "tipster", "name": "동네 제보자", "kind": "봉사자", "row": "rescue",
+    "cost": { "fund": 1 },
+    "onActivate": [{ "op": "draw", "n": 1 }, { "op": "gain", "res": "food", "n": 1 }],
+    "text": "작동: 도움 카드 1장과 사료 1을 받아요.",
+    "flavor": "\"골목 끝 화단에 작은 발자국이 있어요.\"",
+    "art": "card-tipster"
+  },
+  {
+    "id": "night-patrol", "name": "밤 순찰 봉사자", "kind": "봉사자", "row": "rescue",
+    "cost": { "fund": 1, "food": 1 },
+    "onActivate": [{ "op": "token", "res": "heart", "n": 1 }],
+    "text": "작동: 우리 보호소 아이 1마리에게 마음 1을 올려요.",
+    "flavor": "손전등을 비추기 전에, 먼저 이름을 불러 줘요.",
+    "art": "card-night-patrol"
+  },
+  {
+    "id": "foster-home", "name": "임시 보호 가정", "kind": "후원처", "row": "rescue",
+    "cost": { "fund": 2 },
+    "onPlace": [{ "op": "shelterCap", "n": 1 }],
+    "onActivate": [{ "op": "gain", "res": "heart", "n": 1 }],
+    "text": "늘: 보호소 칸 +1. 작동: 마음 1을 받아요.",
+    "flavor": "거실 한쪽, 잠시 머물 담요 자리.",
+    "art": "card-foster-home"
+  },
+  {
+    "id": "big-kennel", "name": "넓은 견사", "kind": "시설", "row": "rescue",
+    "cost": { "fund": 2 },
+    "onPlace": [{ "op": "shelterCap", "n": 2 }],
+    "text": "늘: 보호소 칸 +2.",
+    "flavor": "뛰어놀 자리가 생기면, 짖는 소리도 노래가 돼요.",
+    "art": "card-big-kennel"
+  },
+  {
+    "id": "carrier", "name": "이동장", "kind": "장비", "row": "rescue",
+    "cost": { "fund": 1 },
+    "onActivate": [{ "op": "gain", "res": "food", "n": 1 }, { "op": "gain", "res": "heart", "n": 1 }],
+    "text": "작동: 사료 1과 마음 1을 받아요.",
+    "flavor": "무섭던 상자가, 이제는 집으로 가는 상자.",
+    "art": "card-carrier"
+  },
+  {
+    "id": "street-cat-club", "name": "골목 고양이 모임", "kind": "봉사자", "row": "rescue",
+    "cost": { "food": 1 },
+    "onActivate": [{ "op": "gain", "res": "heart", "n": 1 }, { "op": "partnerGain", "res": "food", "n": 1 }],
+    "text": "작동: 마음 1을 받고, 동료에게 사료 1을 건네요.",
+    "flavor": "저녁 일곱 시, 같은 담장 아래 같은 얼굴들.",
+    "art": "card-street-cat-club"
+  },
+  {
+    "id": "neighbor-network", "name": "이웃 보호소 연락망", "kind": "후원처", "row": "rescue",
+    "cost": { "fund": 2 },
+    "onPlace": [{ "op": "waitingCap", "n": 1 }],
+    "text": "늘: 동네 판의 기다리는 칸 +1.",
+    "flavor": "\"오늘 저희 쪽에 한 자리 비었어요.\"",
+    "art": "card-neighbor-network"
+  },
+
+  {
+    "id": "vet", "name": "수의사", "kind": "직원", "row": "care",
+    "cost": { "fund": 4 },
+    "onActivate": [{ "op": "token", "res": "med", "n": 2 }],
+    "text": "작동: 우리 보호소 아이 1마리에게 약 2를 올려요.",
+    "flavor": "청진기를 손으로 먼저 데워 두는 사람.",
+    "art": "card-vet"
+  },
+  {
+    "id": "groomer", "name": "미용 봉사자", "kind": "봉사자", "row": "care",
+    "cost": { "fund": 1, "food": 1 },
+    "onActivate": [{ "op": "token", "res": "heart", "n": 1 }],
+    "text": "작동: 우리 보호소 아이 1마리에게 마음 1을 올려요.",
+    "flavor": "엉킨 털을 풀면, 숨어 있던 표정이 나와요.",
+    "art": "card-groomer"
+  },
+  {
+    "id": "food-sponsor", "name": "사료 후원처", "kind": "후원처", "row": "care",
+    "cost": { "fund": 2 },
+    "onActivate": [{ "op": "gain", "res": "food", "n": 2 }],
+    "text": "작동: 사료 2를 받아요.",
+    "flavor": "매달 첫째 주, 문 앞에 놓이는 묵직한 상자.",
+    "art": "card-food-sponsor"
+  },
+  {
+    "id": "med-storage", "name": "약품 창고", "kind": "시설", "row": "care",
+    "cost": { "fund": 2 },
+    "onActivate": [{ "op": "gain", "res": "med", "n": 2 }],
+    "text": "작동: 약 2를 받아요.",
+    "flavor": "칸마다 이름표. 급할 때 헤매지 않게.",
+    "art": "card-med-storage"
+  },
+  {
+    "id": "walker", "name": "산책 봉사자", "kind": "봉사자", "row": "care",
+    "cost": { "food": 1 },
+    "onActivate": [{ "op": "gain", "res": "heart", "n": 2 }],
+    "text": "작동: 마음 2를 받아요.",
+    "flavor": "주말 아침, 목줄을 들면 온 견사가 들썩여요.",
+    "art": "card-walker"
+  },
+  {
+    "id": "carer", "name": "돌봄 직원", "kind": "직원", "row": "care",
+    "cost": { "fund": 2 },
+    "onActivate": [{ "op": "gainAny", "n": 2 }],
+    "text": "작동: 사료·약·마음 중 2를 골라 받아요(같은 것 2개도 돼요).",
+    "flavor": "밥그릇 개수를 세지 않아도 아는 사람.",
+    "art": "card-carer"
+  },
+  {
+    "id": "rehab-room", "name": "재활실", "kind": "시설", "row": "care",
+    "cost": { "fund": 3, "med": 1 },
+    "onActivate": [{ "op": "tokenAny", "n": 1 }, { "op": "gain", "res": "med", "n": 1 }],
+    "text": "작동: 아이 1마리에게 필요한 토큰 1을 올리고, 약 1을 받아요.",
+    "flavor": "한 걸음, 쉬고, 또 한 걸음.",
+    "art": "card-rehab-room"
+  },
+  {
+    "id": "toy-basket", "name": "장난감 바구니", "kind": "장비", "row": "care",
+    "cost": { "fund": 1 },
+    "onActivate": [{ "op": "gainAny", "n": 1 }, { "op": "partnerGainAny", "n": 1 }],
+    "text": "작동: 나와 동료가 사료·약·마음 중 1씩 골라 받아요.",
+    "flavor": "인형 하나를 두고 두 보호소가 웃어요.",
+    "art": "card-toy-basket"
+  },
+
+  {
+    "id": "counsel-room", "name": "입양 상담실", "kind": "시설", "row": "adopt",
+    "cost": { "fund": 4 },
+    "onActivate": [{ "op": "adopt", "n": 1 }],
+    "text": "작동: 준비된 아이를 1마리 더 입양 보내요.",
+    "flavor": "\"서두르지 않으셔도 돼요. 이 아이도 천천히 정해요.\"",
+    "art": "card-counsel-room"
+  },
+  {
+    "id": "photo-post", "name": "홍보 사진", "kind": "봉사자", "row": "adopt",
+    "cost": { "fund": 1 },
+    "onActivate": [{ "op": "gain", "res": "fund", "n": 2 }],
+    "text": "작동: 후원금 2를 받아요.",
+    "flavor": "햇빛 좋은 창가에서, 제일 좋아하는 담요와 함께.",
+    "art": "card-photo-post"
+  },
+  {
+    "id": "alumni-picnic", "name": "입양 가족 소풍", "kind": "후원처", "row": "adopt",
+    "cost": { "fund": 2, "heart": 1 },
+    "onActivate": [{ "op": "gain", "res": "fund", "n": 1 }, { "op": "draw", "n": 1 }],
+    "text": "작동: 후원금 1을 받고, 도움 카드 1장을 받아요.",
+    "flavor": "먼저 떠난 아이들이 가족과 함께 놀러 왔어요.",
+    "art": "card-alumni-picnic"
+  },
+  {
+    "id": "adoption-tent", "name": "입양 행사 천막", "kind": "장비", "row": "adopt",
+    "cost": { "fund": 2 },
+    "onActivate": [{ "op": "adoptLoose", "n": 1 }],
+    "text": "작동: 이번에는 토큰이 1개 모자란 아이도 입양 보낼 수 있어요.",
+    "flavor": "\"조금 서툴러도 괜찮아요. 함께 배워 갈게요.\"",
+    "art": "card-adoption-tent"
+  },
+  {
+    "id": "monthly-donor", "name": "정기 후원자", "kind": "후원처", "row": "adopt",
+    "cost": { "heart": 1 },
+    "onActivate": [{ "op": "gain", "res": "fund", "n": 2 }],
+    "text": "작동: 후원금 2를 받아요.",
+    "flavor": "매달 같은 날, 같은 금액, 같은 짧은 편지.",
+    "art": "card-monthly-donor"
+  },
+  {
+    "id": "manners-class", "name": "예절 교실", "kind": "시설", "row": "adopt",
+    "cost": { "fund": 2 },
+    "onActivate": [{ "op": "tokenAny", "n": 1 }],
+    "text": "작동: 아이 1마리에게 필요한 토큰 1을 올려요.",
+    "flavor": "\"앉아\" 다음엔 언제나 칭찬.",
+    "art": "card-manners-class"
+  },
+  {
+    "id": "trainer", "name": "사회화 훈련사", "kind": "직원", "row": "adopt",
+    "cost": { "fund": 3, "food": 1 },
+    "onActivate": [{ "op": "token", "res": "heart", "n": 2 }],
+    "text": "작동: 우리 보호소 아이 1마리에게 마음 2를 올려요.",
+    "flavor": "낯선 손이 반가운 손이 되기까지.",
+    "art": "card-trainer"
+  },
+  {
+    "id": "newsletter", "name": "동네 소식지", "kind": "장비", "row": "adopt",
+    "cost": { "fund": 1 },
+    "onActivate": [{ "op": "draw", "n": 1 }, { "op": "partnerGain", "res": "fund", "n": 1 }],
+    "text": "작동: 도움 카드 1장을 받고, 동료에게 후원금 1을 건네요.",
+    "flavor": "이번 달 표지는 지난달 입양 간 '두부'.",
+    "art": "card-newsletter"
+  }
+]
